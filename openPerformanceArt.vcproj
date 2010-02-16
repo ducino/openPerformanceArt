@@ -202,6 +202,38 @@
 				RelativePath=".\src\mainApp.h"
 				>
 			</File>
+			<File
+				RelativePath=".\src\scene.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\scene.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="input"
+			>
+			<File
+				RelativePath=".\src\input.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\input.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="output"
+			>
+			<File
+				RelativePath=".\src\output.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\output.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

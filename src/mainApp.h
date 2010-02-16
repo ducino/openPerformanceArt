@@ -20,6 +20,9 @@ class mainApp : public ofBaseApp{
 		void windowResized(int w, int h);
 
 	private:
+		void drawTitleScreen();
+
+	private:
 		char* title;
 		ofTrueTypeFont titleFont;
 };

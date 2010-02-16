@@ -14,24 +14,7 @@ void mainApp::update(){
 
 //--------------------------------------------------------------
 void mainApp::draw(){
-	ofBackground(150, 150, 150);	
-
-	
-
-	//Draw the lines in the background
-	ofSetColor(230, 230, 230);
-
-	for(int i = 0; i < ofRandom(0, 10); i++)
-	{
-		float x = ofRandom(ofGetWidth()/2, ofGetWidth());
-		float y = ofRandom(0, ofGetHeight()/2);
-		float t = ofRandom(0, ofGetHeight()/2);
-		ofLine(x, y, x - t, y + t);
-	}
-
-	//Draw the title
-	ofSetColor(0x0F0F0F);
-	titleFont.drawString(title, ofGetWidth()/2-titleFont.stringWidth(title)/2, ofGetHeight()/2);
+	drawTitleScreen();
 }
 
 //--------------------------------------------------------------
@@ -69,3 +52,23 @@ void mainApp::windowResized(int w, int h){
 
 }
 
+//--------------------------------------------------------------
+void mainApp::drawTitleScreen()
+{
+	ofBackground(150, 150, 150);	
+
+	//Draw the lines in the background
+	ofSetColor(230, 230, 230);
+
+	for(int i = 0; i < ofRandom(0, 10); i++)
+	{
+		float x = ofRandom(ofGetWidth()/2, ofGetWidth());
+		float y = ofRandom(0, ofGetHeight()/2);
+		float t = ofRandom(0, ofGetHeight()/2);
+		ofLine(x, y, x - t, y + t);
+	}
+
+	//Draw the title
+	ofSetColor(0x505050);
+	titleFont.drawString(title, ofGetWidth()/2-titleFont.stringWidth(title)/2, ofGetHeight()/2);
+}
