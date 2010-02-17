@@ -210,6 +210,22 @@
 				RelativePath=".\src\scene.h"
 				>
 			</File>
+			<File
+				RelativePath=".\src\scenefactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\scenefactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\sceneproxy.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\sceneproxy.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="input"

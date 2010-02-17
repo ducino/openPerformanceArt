@@ -4,9 +4,15 @@
 
 #include "ofMain.h"
 
+class SceneFactory;
+class SceneProxy;
+
 class mainApp : public ofBaseApp{
 
 	public:
+		mainApp();
+		~mainApp();
+
 		void setup();
 		void update();
 		void draw();
@@ -23,8 +29,14 @@ class mainApp : public ofBaseApp{
 		void drawTitleScreen();
 
 	private:
+		//Title
 		char* title;
 		ofTrueTypeFont titleFont;
+
+		//Scenes		
+		vector<SceneProxy*> scenes;
+		SceneFactory* pSceneFactory;
+		SceneProxy* pCurrentScene;
 };
 
 #endif

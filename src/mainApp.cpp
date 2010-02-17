@@ -1,11 +1,27 @@
 #include "mainApp.h"
+#include "scenefactory.h"
+#include "sceneproxy.h"
 
+//--------------------------------------------------------------
+mainApp::mainApp()
+: pCurrentScene(NULL)
+{
+	pSceneFactory = new SceneFactory();
+}
+//--------------------------------------------------------------
+mainApp::~mainApp()
+{
+	delete pCurrentScene;
+	delete pSceneFactory;
+}
 //--------------------------------------------------------------
 void mainApp::setup(){
 	title = "openPerformanceArt";
 	titleFont.loadFont("AnnabelScript.ttf", 60);
 
 	ofSetFrameRate(30);
+
+	pSceneFactory->loadScenes("Test.xml", scenes);
 }
 
 //--------------------------------------------------------------
