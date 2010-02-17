@@ -26,7 +26,14 @@ class mainApp : public ofBaseApp{
 		void windowResized(int w, int h);
 
 	private:
+
 		void drawTitleScreen();
+
+		//Go to previous scene in the scenes list
+		void previousScene();
+
+		//Go to the next scene in the scenes list
+		void nextScene();
 
 	private:
 		//Title
@@ -36,7 +43,9 @@ class mainApp : public ofBaseApp{
 		//Scenes		
 		vector<SceneProxy*> scenes;
 		SceneFactory* pSceneFactory;
+		int iCurrentScene;
 		SceneProxy* pCurrentScene;
+
 };
 
 #endif

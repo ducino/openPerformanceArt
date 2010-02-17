@@ -6,6 +6,7 @@
 using namespace std;
 
 class SceneProxy;
+namespace Poco { namespace XML {class Node;} }
 
 class SceneFactory {
 
@@ -17,6 +18,11 @@ class SceneFactory {
 		 * Load all scenes described in the given xml file
 		 */
 		void loadScenes(string xmlFile, vector<SceneProxy*>& scenes);
+
+	private:
+
+		//Check if the tag of the node matches the given name
+		bool match(Poco::XML::Node* pNode, string tag);
 };
 
 #endif

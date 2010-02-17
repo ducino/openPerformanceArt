@@ -4,14 +4,14 @@
 
 //--------------------------------------------------------------
 mainApp::mainApp()
-: pCurrentScene(NULL)
+: pCurrentScene(NULL),
+  iCurrentScene(-1)
 {
 	pSceneFactory = new SceneFactory();
 }
 //--------------------------------------------------------------
 mainApp::~mainApp()
 {
-	delete pCurrentScene;
 	delete pSceneFactory;
 }
 //--------------------------------------------------------------
@@ -30,12 +30,27 @@ void mainApp::update(){
 
 //--------------------------------------------------------------
 void mainApp::draw(){
-	drawTitleScreen();
+	if(iCurrentScene == -1)
+	{
+		drawTitleScreen();
+	}
+	else
+	{
+		pCurrentScene->draw();
+	}
 }
 
 //--------------------------------------------------------------
 void mainApp::keyPressed(int key){
 
+	if(key == OF_KEY_LEFT)
+	{
+		previousScene();
+	}
+	else if(key == OF_KEY_RIGHT)
+	{
+		nextScene();
+	}
 }
 
 //--------------------------------------------------------------
@@ -88,3 +103,34 @@ void mainApp::drawTitleScreen()
 	ofSetColor(0x505050);
 	titleFont.drawString(title, ofGetWidth()/2-titleFont.stringWidth(title)/2, ofGetHeight()/2);
 }
+//--------------------------------------------------------------
+void mainApp::previousScene(){
+	if(scenes.size() > 0)
+	{
+		iCurrentScene = (iCurrentScene+1)%scenes.size();
+
+		//Unload previous scene
+		if(pCurrentScene)
+		{
+			pCurrentScene->unload();
+		}
+
+		pCurrentScene = scenes.at(iCurrentScene);
+	}
+}
+//--------------------------------------------------------------
+void mainApp::nextScene(){
+	if(scenes.size() > 0)
+	{
+		iCurrentScene = (iCurrentScene+1)%scenes.size();
+
+		//Unload previous scene
+		if(pCurrentScene)
+		{
+			pCurrentScene->unload();
+		}
+
+		pCurrentScene = scenes.at(iCurrentScene);
+	}
+}
+//--------------------------------------------------------------
