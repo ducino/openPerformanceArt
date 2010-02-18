@@ -203,6 +203,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\parseutils.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\parseutils.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\scene.cpp"
 				>
 			</File>
@@ -238,6 +246,14 @@
 				RelativePath=".\src\input.h"
 				>
 			</File>
+			<File
+				RelativePath=".\src\timerinput.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\timerinput.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="output"
@@ -248,6 +264,26 @@
 			</File>
 			<File
 				RelativePath=".\src\output.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="events"
+			>
+			<File
+				RelativePath=".\src\inputevent.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\inputevent.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\inputobserver.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\inputobserver.h"
 				>
 			</File>
 		</Filter>

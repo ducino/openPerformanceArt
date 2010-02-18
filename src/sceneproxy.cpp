@@ -1,5 +1,6 @@
 #include "sceneproxy.h"
 #include "scene.h"
+#include "parseutils.h"
 
 #include "ofMain.h"
 #include "Poco/DOM/Node.h"
@@ -13,12 +14,9 @@ SceneProxy::SceneProxy(Node* pNode)
 : pScene(NULL)
 {
 	this->pNode = pNode->cloneNode(true);
+
 	//Read name of this scene
-	{
-		NamedNodeMap* pMap = pNode->attributes();
-		name = pMap->getNamedItem("name")->nodeValue();
-		pMap->release();
-	}
+	name = getStringAttribute(pNode, "name", "No name");
 
 	pFont = new ofTrueTypeFont();
 	pFont->loadFont("AnnabelScript.ttf", 30);

@@ -7,7 +7,7 @@ class Output {
 		Output();
 		~Output();
 
-		virtual void trigger()=0;
+		virtual void draw()=0;
 };
 
 #endif

@@ -15,10 +15,26 @@ class SceneProxy {
 		SceneProxy(Poco::XML::Node* pNode);
 		~SceneProxy();
 
+		/*
+		 * Load the scene
+		 */
 		void load();
+
+		/*
+		 * Unload the scene, releasing its resources
+		 */
 		void unload();
 
+		/*
+		 * Update the scene, should be called whenever the scene is active 
+		 * and the main update method is called
+		 */
 		void update();
+
+		/*
+		 * Draw the scene, should be called whenever the scene is active 
+		 * and the main draw method is called
+		 */
 		void draw();
 
 	private:

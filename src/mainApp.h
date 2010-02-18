@@ -1,9 +1,10 @@
 #ifndef _TEST_APP
 #define _TEST_APP
 
-
+//Includes
 #include "ofMain.h"
 
+//Forward declarations
 class SceneFactory;
 class SceneProxy;
 

@@ -1,5 +1,6 @@
 #include "scenefactory.h"
 #include "sceneproxy.h"
+#include "parseutils.h"
 
 #include "Poco/DOM/DOMParser.h"
 #include "Poco/DOM/Document.h"
@@ -51,15 +52,4 @@ void SceneFactory::loadScenes(string xmlFile, vector<SceneProxy*>& scenes)
 	{
 		std::cerr << exc.displayText() << std::endl;
 	}
-}
-//--------------------------------------------------------------
-bool caseInsensitiveCharCompare(char a, char b) {
-   return(tolower(a) == tolower(b));
-}
-//--------------------------------------------------------------
-bool SceneFactory::match(Node* pNode, string tag)
-{
-	string nodeTag = pNode->nodeName();
-	return((tag.size( ) == nodeTag.size( )) &&
-          equal(tag.begin( ), tag.end( ), nodeTag.begin( ), caseInsensitiveCharCompare));
 }

@@ -21,8 +21,6 @@ class SceneFactory {
 
 	private:
 
-		//Check if the tag of the node matches the given name
-		bool match(Poco::XML::Node* pNode, string tag);
 };
 
 #endif
