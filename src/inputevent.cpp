@@ -1,10 +1,8 @@
 #include "inputevent.h"
 
 //--------------------------------------------------------------
-InputEvent::InputEvent()
-{
+InputEvent::InputEvent(){
 }
 //--------------------------------------------------------------
-InputEvent::~InputEvent()
-{
+InputEvent::~InputEvent(){
 }

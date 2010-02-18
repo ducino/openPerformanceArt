@@ -1,13 +1,14 @@
 #ifndef _OUTPUT_H
 #define _OUTPUT_H
 
-class Output {
+class Output 
+{
 
-	public:
-		Output();
-		~Output();
+public:
+	Output();
+	~Output();
 
-		virtual void draw()=0;
+	virtual void draw()=0;
 };
 
 #endif

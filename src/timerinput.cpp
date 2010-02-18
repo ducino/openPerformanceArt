@@ -1,5 +1,7 @@
 #include "timerinput.h"
 #include "parseutils.h"
+
+#include "ofMain.h"
 #include "Poco/DOM/Node.h"
 
 using Poco::XML::Node;

@@ -10,16 +10,16 @@ namespace Poco { namespace XML {class Node;} }
 
 class SceneFactory {
 
-	public:
-		SceneFactory();
-		~SceneFactory();
+public:
+	SceneFactory();
+	~SceneFactory();
 
-		/*
-		 * Load all scenes described in the given xml file
-		 */
-		void loadScenes(string xmlFile, vector<SceneProxy*>& scenes);
+	/*
+	 * Load all scenes described in the given xml file
+	 */
+	void loadScenes(string xmlFile, vector<SceneProxy*>& scenes);
 
-	private:
+private:
 
 };
 

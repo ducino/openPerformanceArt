@@ -53,6 +53,7 @@ bool equalsIgnoreCase(string one, string other)
 
 
 //--------------------------------------------------------------
-bool caseInsensitiveCharCompare(char a, char b) {
+bool caseInsensitiveCharCompare(char a, char b)
+{
    return(tolower(a) == tolower(b));
 }

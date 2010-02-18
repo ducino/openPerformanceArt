@@ -4,13 +4,14 @@
 //Includes
 #include "inputevent.h"
 
-class InputObserver {
+class InputObserver 
+{
 
-	public:
-		InputObserver();
-		~InputObserver();
+public:
+	InputObserver();
+	~InputObserver();
 
-		virtual void trigger(InputEvent event)=0;
+	virtual void trigger(InputEvent event)=0;
 };
 
 #endif

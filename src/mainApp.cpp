@@ -10,12 +10,13 @@ mainApp::mainApp()
 	pSceneFactory = new SceneFactory();
 }
 //--------------------------------------------------------------
-mainApp::~mainApp()
+mainApp::~mainApp() 
 {
 	delete pSceneFactory;
 }
 //--------------------------------------------------------------
-void mainApp::setup(){
+void mainApp::setup()
+{
 	title = "openPerformanceArt";
 	titleFont.loadFont("AnnabelScript.ttf", 60);
 
@@ -25,11 +26,13 @@ void mainApp::setup(){
 }
 
 //--------------------------------------------------------------
-void mainApp::update(){
+void mainApp::update()
+{
 }
 
 //--------------------------------------------------------------
-void mainApp::draw(){
+void mainApp::draw()
+{
 	if(iCurrentScene == -1)
 	{
 		drawTitleScreen();
@@ -41,7 +44,8 @@ void mainApp::draw(){
 }
 
 //--------------------------------------------------------------
-void mainApp::keyPressed(int key){
+void mainApp::keyPressed(int key)
+{
 
 	if(key == OF_KEY_LEFT)
 	{
@@ -54,32 +58,38 @@ void mainApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void mainApp::keyReleased(int key){
+void mainApp::keyReleased(int key)
+{
 
 }
 
 //--------------------------------------------------------------
-void mainApp::mouseMoved(int x, int y ){
+void mainApp::mouseMoved(int x, int y )
+{
 
 }
 
 //--------------------------------------------------------------
-void mainApp::mouseDragged(int x, int y, int button){
+void mainApp::mouseDragged(int x, int y, int button)
+{
 
 }
 
 //--------------------------------------------------------------
-void mainApp::mousePressed(int x, int y, int button){
+void mainApp::mousePressed(int x, int y, int button)
+{
 
 }
 
 //--------------------------------------------------------------
-void mainApp::mouseReleased(int x, int y, int button){
+void mainApp::mouseReleased(int x, int y, int button)
+{
 
 }
 
 //--------------------------------------------------------------
-void mainApp::windowResized(int w, int h){
+void mainApp::windowResized(int w, int h)
+{
 
 }
 
@@ -104,7 +114,8 @@ void mainApp::drawTitleScreen()
 	titleFont.drawString(title, ofGetWidth()/2-titleFont.stringWidth(title)/2, ofGetHeight()/2);
 }
 //--------------------------------------------------------------
-void mainApp::previousScene(){
+void mainApp::previousScene()
+{
 	if(scenes.size() > 0)
 	{
 		iCurrentScene = (iCurrentScene+1)%scenes.size();
@@ -119,7 +130,8 @@ void mainApp::previousScene(){
 	}
 }
 //--------------------------------------------------------------
-void mainApp::nextScene(){
+void mainApp::nextScene()
+{
 	if(scenes.size() > 0)
 	{
 		iCurrentScene = (iCurrentScene+1)%scenes.size();
