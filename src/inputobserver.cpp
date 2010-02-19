@@ -22,22 +22,8 @@ InputObserver::InputObserver(Node *pNode)
 	{
 		InputManager::the().registerObserver(inputName, this);
 	}
-
-	duration = getIntAttribute(pNode, "duration", 0);
 }
 //--------------------------------------------------------------
 InputObserver::~InputObserver()
 {
-}
-//--------------------------------------------------------------
-void InputObserver::trigger(InputEvent& event)
-{
-	previousTriggerTime = ofGetElapsedTimeMillis();
-
-	triggerInternal(event);
-}
-//--------------------------------------------------------------
-bool InputObserver::isActive()
-{
-	return duration == 0 || (ofGetElapsedTimeMillis() - previousTriggerTime < duration);
 }

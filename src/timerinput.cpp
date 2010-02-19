@@ -27,7 +27,7 @@ TimerInput::~TimerInput()
 //--------------------------------------------------------------
 void TimerInput::updateActivationTime()
 {
-	activationTime = ofGetElapsedTimeMillis() + interval;
+	activationTime += interval;
 }
 //--------------------------------------------------------------
 void TimerInput::read()

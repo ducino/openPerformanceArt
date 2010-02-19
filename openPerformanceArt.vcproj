@@ -294,6 +294,14 @@
 				RelativePath=".\src\rectangleoutput.h"
 				>
 			</File>
+			<File
+				RelativePath=".\src\timedoutput.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\timedoutput.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="events"

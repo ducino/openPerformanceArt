@@ -6,7 +6,7 @@
 #include "inputobserver.h"
 #include "ofMain.h"
 
-class RectangleOutput: public Output, public InputObserver
+class RectangleOutput: public Output
 {
 
 public:
@@ -16,9 +16,6 @@ public:
 
 	virtual void draw();
 	virtual Output* create(Poco::XML::Node* pNode);
-
-protected:
-	virtual void triggerInternal(InputEvent& event);
 
 private:
 	ofColor color;

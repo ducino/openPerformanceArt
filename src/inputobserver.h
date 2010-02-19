@@ -14,20 +14,7 @@ public:
 	InputObserver(Poco::XML::Node* pNode);
 	~InputObserver();
 
-	void trigger(InputEvent& event);
-
-protected:
-	virtual void triggerInternal(InputEvent& event)=0;
-
-	/*
-	 * Check if this observer is active
-	 * Active means it has been triggered recently
-	 */
-	bool isActive();
-
-private:
-	long previousTriggerTime;
-	long duration;
+	virtual void trigger(InputEvent& event)=0;
 };
 
 #endif

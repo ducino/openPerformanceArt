@@ -9,6 +9,7 @@
 #include "Poco/DOM/DOMParser.h"
 #include "Poco/DOM/Document.h"
 #include "Poco/DOM/NodeIterator.h"
+#include "Poco/DOM/TreeWalker.h"
 #include "Poco/DOM/NodeFilter.h"
 #include "Poco/DOM/AutoPtr.h"
 #include "Poco/SAX/InputSource.h"
@@ -19,6 +20,7 @@ using Poco::XML::DOMParser;
 using Poco::XML::InputSource;
 using Poco::XML::Document;
 using Poco::XML::NodeIterator;
+using Poco::XML::TreeWalker;
 using Poco::XML::NodeFilter;
 using Poco::XML::Node;
 using Poco::XML::AutoPtr;
@@ -102,36 +104,48 @@ void SceneFactory::load(vector<SceneProxy*>& scenes)
 //--------------------------------------------------------------
 void SceneFactory::createInputs(Poco::XML::Node* pRootNode, vector<Input*>& inputs)
 {
-	NodeIterator it(pRootNode, NodeFilter::SHOW_ALL);
+	TreeWalker it(pRootNode, NodeFilter::SHOW_ELEMENT);
 	Node* pNode = it.nextNode();
 	
+	cout << "Inputs" << endl;
 	while (pNode)
 	{
+		cout << "- " << pNode->nodeName() << endl;
 		Input* input = inputMap[pNode->nodeName()];
 		if( input != NULL)
 		{
 			inputs.push_back(input->create(pNode));
 			cout << "Created input with name : " << pNode->nodeName() << endl;
 		}
+		else
+		{
+			cerr << "Not recognized: " << pNode->nodeName() << endl;
+		}
 
-		pNode = it.nextNode();
+		pNode = it.nextSibling();
 	}
 }
 //--------------------------------------------------------------
 void SceneFactory::loadOutputs(vector<Output*>& outputs, Poco::XML::Node* pRootNode)
 {
-	NodeIterator it(pRootNode, NodeFilter::SHOW_ALL);
+	TreeWalker it(pRootNode, NodeFilter::SHOW_ELEMENT);
 	Node* pNode = it.nextNode();
 	
+	cout << "Outputs" << endl;
 	while (pNode)
 	{
+		cout << "- " << pNode->nodeName() << endl;
 		Output* output = outputMap[pNode->nodeName()];
 		if( output != NULL)
 		{
 			outputs.push_back(output->create(pNode));
 			cout << "Created output with name : " << pNode->nodeName() << endl;
 		}
+		else
+		{
+			cerr << "Not recognized: " << pNode->nodeName() << endl;
+		}
 
-		pNode = it.nextNode();
+		pNode = it.nextSibling();
 	}
 }
