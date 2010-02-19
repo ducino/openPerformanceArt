@@ -31,6 +31,7 @@ void mainApp::setup()
 	titleFont.loadFont("AnnabelScript.ttf", 60);
 
 	ofSetFrameRate(30);
+	ofSetVerticalSync(true);
 
 	SceneFactory::the().load(scenes);
 }
