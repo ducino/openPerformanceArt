@@ -7,6 +7,7 @@
 
 //Forward declarations
 class InputObserver;
+namespace Poco { namespace XML { class Node; } }
 
 using namespace std;
 
@@ -15,12 +16,23 @@ class Input
 
 public:
 	Input();
+	Input(Poco::XML::Node* pNode);
 	~Input();
 
 	/*
 	 * Read the input, notifying observers when something of interest has happened
 	 */
 	virtual void read()=0;
+
+	/*
+	 * Get the name of this input
+	 */
+	string getName() const;
+
+	/*
+	 * Create an instance of this class given an XML description
+	 */
+	virtual Input* create(Poco::XML::Node* pNode)=0;
 
 	/*
 	 * Add an observer to this input
@@ -40,6 +52,9 @@ protected:
 	void notifyObservers(InputEvent event);
 
 private:
+
+	//The name of this input
+	string name;
 
 	//The list of observers listening to this input
 	vector<InputObserver*> observers;

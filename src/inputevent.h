@@ -1,11 +1,20 @@
 #ifndef _INPUT_EVENT_H
 #define _INPUT_EVENT_H
 
-class InputEvent{
+class InputEvent
+{
+public:
+	InputEvent();
+	InputEvent(int eventId);
+	~InputEvent();
 
-	public:
-		InputEvent();
-		~InputEvent();
+	/*
+	 * Get the event identifier
+	 */
+	int getEventId();
+
+private:
+	int eventId;
 };
 
 #endif

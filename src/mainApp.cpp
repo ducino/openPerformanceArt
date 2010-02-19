@@ -1,18 +1,28 @@
 #include "mainApp.h"
 #include "scenefactory.h"
 #include "sceneproxy.h"
+#include "input.h"
+#include "inputmanager.h"
+
+using namespace std;
 
 //--------------------------------------------------------------
-mainApp::mainApp()
+mainApp::mainApp(int argc, const char* argv[])
 : pCurrentScene(NULL),
   iCurrentScene(-1)
 {
-	pSceneFactory = new SceneFactory();
+	if(argc == 1)
+	{
+		SceneFactory::the().setXml("config.xml");
+	}
+	else
+	{
+		SceneFactory::the().setXml(string(argv[1]));
+	}
 }
 //--------------------------------------------------------------
 mainApp::~mainApp() 
 {
-	delete pSceneFactory;
 }
 //--------------------------------------------------------------
 void mainApp::setup()
@@ -22,12 +32,16 @@ void mainApp::setup()
 
 	ofSetFrameRate(30);
 
-	pSceneFactory->loadScenes("Test.xml", scenes);
+	SceneFactory::the().load(scenes);
 }
 
 //--------------------------------------------------------------
 void mainApp::update()
 {
+	if(pCurrentScene)
+	{
+		pCurrentScene->update();
+	}
 }
 
 //--------------------------------------------------------------
@@ -54,6 +68,19 @@ void mainApp::keyPressed(int key)
 	else if(key == OF_KEY_RIGHT)
 	{
 		nextScene();
+	}
+	else if(key == OF_KEY_RETURN)
+	{
+		if(pCurrentScene)
+		{
+			pCurrentScene->load();
+		}
+	}
+	else if(key == OF_KEY_BACKSPACE)
+	{
+		unloadCurrentScene();
+		iCurrentScene = -1;
+		pCurrentScene = NULL;
 	}
 }
 
@@ -120,11 +147,7 @@ void mainApp::previousScene()
 	{
 		iCurrentScene = (iCurrentScene+1)%scenes.size();
 
-		//Unload previous scene
-		if(pCurrentScene)
-		{
-			pCurrentScene->unload();
-		}
+		unloadCurrentScene();
 
 		pCurrentScene = scenes.at(iCurrentScene);
 	}
@@ -136,13 +159,17 @@ void mainApp::nextScene()
 	{
 		iCurrentScene = (iCurrentScene+1)%scenes.size();
 
-		//Unload previous scene
-		if(pCurrentScene)
-		{
-			pCurrentScene->unload();
-		}
+		unloadCurrentScene();
 
 		pCurrentScene = scenes.at(iCurrentScene);
 	}
 }
 //--------------------------------------------------------------
+void mainApp::unloadCurrentScene()
+{
+	if(pCurrentScene)
+	{
+		pCurrentScene->unload();
+		InputManager::the().unregisterAllObservers();
+	}
+}

@@ -12,7 +12,7 @@ namespace Poco { namespace XML { class Node; }}
 class SceneProxy {
 
 	public:
-		SceneProxy(Poco::XML::Node* pNode);
+		SceneProxy(Poco::XML::Node* pRootNode);
 		~SceneProxy();
 
 		/*

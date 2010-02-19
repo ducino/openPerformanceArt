@@ -45,6 +45,88 @@ int getIntAttribute(Poco::XML::Node* pNode, string name, int defaultValue)
 	}	
 }
 //--------------------------------------------------------------
+ofColor getColorAttribute(Poco::XML::Node* pNode, string name, ofColor defaultValue)
+{
+	AutoPtr<NamedNodeMap> pMap = pNode->attributes();
+	Node* pAttributeNode = pMap->getNamedItem(name);
+	if(pAttributeNode)
+	{
+		char c[20];
+		if(pAttributeNode->nodeValue().size() >= 20)
+		{
+			return defaultValue;
+		}
+
+		strcpy(c, pAttributeNode->nodeValue().c_str());
+		char* red = strtok (c, " ,");
+
+		if(red == NULL)
+		{
+			return defaultValue;
+		}
+
+		char* green = strtok (NULL," ,");
+				
+		if(green == NULL)
+		{
+			return defaultValue;
+		}
+
+		char* blue = strtok (NULL," ,");
+				
+		if(blue == NULL)
+		{
+			return defaultValue;
+		}
+
+		ofColor color;
+		color.r = ofToInt(red);
+		color.g = ofToInt(green);
+		color.b = ofToInt(blue);
+
+		return color;
+	}
+	else
+	{
+		return defaultValue;
+	}
+}
+//--------------------------------------------------------------
+ofPoint get2DCoordAttribute(Poco::XML::Node* pNode, string name, ofPoint defaultValue)
+{
+	AutoPtr<NamedNodeMap> pMap = pNode->attributes();
+	Node* pAttributeNode = pMap->getNamedItem(name);
+	if(pAttributeNode)
+	{
+		char c[20];
+		if(pAttributeNode->nodeValue().size() >= 20)
+		{
+			return defaultValue;
+		}
+
+		strcpy(c, pAttributeNode->nodeValue().c_str());
+		char* x = strtok (c, " ,");
+
+		if(x == NULL)
+		{
+			return defaultValue;
+		}
+
+		char* y = strtok (NULL," ,");
+				
+		if(y == NULL)
+		{
+			return defaultValue;
+		}
+
+		return ofPoint(ofToInt(x), ofToInt(y));
+	}
+	else
+	{
+		return defaultValue;
+	}
+}
+//--------------------------------------------------------------
 bool equalsIgnoreCase(string one, string other)
 {
 	return ((one.size( ) == other.size( )) &&

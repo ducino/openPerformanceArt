@@ -7,11 +7,12 @@
 //Forward declarations
 class SceneFactory;
 class SceneProxy;
+class Input;
 
 class mainApp : public ofBaseApp{
 
 	public:
-		mainApp();
+		mainApp(int argc, const char* argv[]);
 		~mainApp();
 
 		void setup();
@@ -36,6 +37,9 @@ class mainApp : public ofBaseApp{
 		//Go to the next scene in the scenes list
 		void nextScene();
 
+		//Unload the current scene
+		void unloadCurrentScene();
+
 	private:
 		//Title
 		char* title;
@@ -43,10 +47,8 @@ class mainApp : public ofBaseApp{
 
 		//Scenes		
 		vector<SceneProxy*> scenes;
-		SceneFactory* pSceneFactory;
 		int iCurrentScene;
 		SceneProxy* pCurrentScene;
-
 };
 
 #endif

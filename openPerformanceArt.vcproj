@@ -191,6 +191,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\src\configuration.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
 				>
 			</File>
@@ -247,6 +251,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\inputmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\inputmanager.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\timerinput.cpp"
 				>
 			</File>
@@ -259,11 +271,27 @@
 			Name="output"
 			>
 			<File
+				RelativePath=".\src\backgroundoutput.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\backgroundoutput.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\output.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\src\output.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\rectangleoutput.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\rectangleoutput.h"
 				>
 			</File>
 		</Filter>

@@ -1,5 +1,9 @@
 #include "scenefactory.h"
 #include "sceneproxy.h"
+#include "inputmanager.h"
+#include "input.h"
+#include "output.h"
+#include "scene.h"
 #include "parseutils.h"
 
 #include "Poco/DOM/DOMParser.h"
@@ -23,18 +27,54 @@ using Poco::Exception;
 //--------------------------------------------------------------
 SceneFactory::SceneFactory()
 {
+	createInputMap();
+	createOutputMap();
 }
 //--------------------------------------------------------------
 SceneFactory::~SceneFactory()
 {
+	//Clean up the input map
+	{
+		map<string,Input*>::iterator iter;
+		for( iter = inputMap.begin(); iter != inputMap.end(); ++iter ) {
+			delete iter->second;
+		}
+		inputMap.clear();
+	}
+
+	//Clean up the output map
+	{
+		map<string,Output*>::iterator iter;
+		for( iter = outputMap.begin(); iter != outputMap.end(); ++iter ) {
+			delete iter->second;
+		}
+		outputMap.clear();
+	}
+
+	//Clean up the documents
+	{
+		vector<Document*>::iterator iter;
+		for( iter = documents.begin(); iter != documents.end(); ++iter ) {
+			(*iter)->release();
+		}
+		documents.clear();
+	}
 }
 //--------------------------------------------------------------
-void SceneFactory::loadScenes(string xmlFile, vector<SceneProxy*>& scenes)
+void SceneFactory::setXml(string xmlFile)
 {
+	this->xmlFile = xmlFile;
+}
+//--------------------------------------------------------------
+void SceneFactory::load(vector<SceneProxy*>& scenes)
+{
+	vector<Input*> inputs;
 	try
 	{
 		DOMParser parser;
-		AutoPtr<Document> pDoc = parser.parse(xmlFile);
+		Document* pDoc = parser.parse(xmlFile);
+		//Save the document in memory
+		documents.push_back(pDoc);
 		
 		NodeIterator it(pDoc, NodeFilter::SHOW_ALL);
 		Node* pNode = it.nextNode();
@@ -44,6 +84,10 @@ void SceneFactory::loadScenes(string xmlFile, vector<SceneProxy*>& scenes)
 			{
 				scenes.push_back(new SceneProxy(pNode));
 			}
+			else if(match(pNode, "input"))
+			{
+				createInputs(pNode, inputs);
+			}
 
 			pNode = it.nextNode();
 		}
@@ -51,5 +95,43 @@ void SceneFactory::loadScenes(string xmlFile, vector<SceneProxy*>& scenes)
 	catch (Exception& exc)
 	{
 		std::cerr << exc.displayText() << std::endl;
+	}
+
+	InputManager::the().add(inputs);
+}
+//--------------------------------------------------------------
+void SceneFactory::createInputs(Poco::XML::Node* pRootNode, vector<Input*>& inputs)
+{
+	NodeIterator it(pRootNode, NodeFilter::SHOW_ALL);
+	Node* pNode = it.nextNode();
+	
+	while (pNode)
+	{
+		Input* input = inputMap[pNode->nodeName()];
+		if( input != NULL)
+		{
+			inputs.push_back(input->create(pNode));
+			cout << "Created input with name : " << pNode->nodeName() << endl;
+		}
+
+		pNode = it.nextNode();
+	}
+}
+//--------------------------------------------------------------
+void SceneFactory::loadOutputs(vector<Output*>& outputs, Poco::XML::Node* pRootNode)
+{
+	NodeIterator it(pRootNode, NodeFilter::SHOW_ALL);
+	Node* pNode = it.nextNode();
+	
+	while (pNode)
+	{
+		Output* output = outputMap[pNode->nodeName()];
+		if( output != NULL)
+		{
+			outputs.push_back(output->create(pNode));
+			cout << "Created output with name : " << pNode->nodeName() << endl;
+		}
+
+		pNode = it.nextNode();
 	}
 }

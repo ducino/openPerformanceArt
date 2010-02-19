@@ -15,10 +15,13 @@ class TimerInput: public Input
 {
 
 public:
+	TimerInput();
 	TimerInput(Poco::XML::Node* pNode);
 	~TimerInput();
 
 	virtual void read();
+
+	virtual Input* create(Poco::XML::Node* pNode);
 
 private:
 	long activationTime;

@@ -1,13 +1,31 @@
 #include "input.h"
 #include "inputobserver.h"
+#include "parseutils.h"
+#include "Poco/DOM/Node.h"
+
+using Poco::XML::Node;
 
 //--------------------------------------------------------------
 Input::Input()
 {
 }
 //--------------------------------------------------------------
+Input::Input(Node* pNode)
+{
+	name = getStringAttribute(pNode, "name", "");
+	if(equalsIgnoreCase(name, ""))
+	{
+		cerr << "The name was not specified for node " << pNode->localName() << endl;
+	}
+}
+//--------------------------------------------------------------
 Input::~Input()
 {
+}
+//--------------------------------------------------------------
+string Input::getName() const
+{
+	return name;
 }
 //--------------------------------------------------------------
 void Input::add(InputObserver* observer)

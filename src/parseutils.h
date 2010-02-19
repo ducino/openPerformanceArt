@@ -8,6 +8,7 @@
 
 //Includes
 #include <iostream>
+#include "ofMain.h"
 
 //Forward declarations
 namespace Poco { namespace XML {class Node;} }
@@ -30,6 +31,18 @@ string getStringAttribute(Poco::XML::Node* pNode, string name, string defaultVal
  * The defaultvalue will be returned when the attribute does not exist
  */
 int getIntAttribute(Poco::XML::Node* pNode, string name, int defaultValue);
+
+/*
+ * Get a color attribute of a node given its name
+ * The defaultvalue will be returned when the attribute does not exist
+ */
+ofColor getColorAttribute(Poco::XML::Node* pNode, string name, ofColor defaultValue);
+
+/*
+ * Get a 2D coordinates attribute of a node given its name
+ * The defaultvalue will be returned when the attribute does not exist
+ */
+ofPoint get2DCoordAttribute(Poco::XML::Node* pNode, string name, ofPoint defaultValue);
 
 /*
  * Check if two strings are the same (ignoring the case)
