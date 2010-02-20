@@ -1,0 +1,4 @@
+<root>
+	<include path="examples/basic/basic.xml" />
+	<scene name="Empty scene"></scene>
+</root>

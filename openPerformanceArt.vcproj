@@ -271,14 +271,6 @@
 			Name="output"
 			>
 			<File
-				RelativePath=".\src\backgroundoutput.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\backgroundoutput.h"
-				>
-			</File>
-			<File
 				RelativePath=".\src\output.cpp"
 				>
 			</File>
@@ -294,30 +286,54 @@
 				RelativePath=".\src\outputcollection.h"
 				>
 			</File>
-			<File
-				RelativePath=".\src\rectangleoutput.cpp"
+			<Filter
+				Name="triggercontrols"
 				>
-			</File>
-			<File
-				RelativePath=".\src\rectangleoutput.h"
+				<File
+					RelativePath=".\src\roundrobin.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\roundrobin.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\timedoutput.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\timedoutput.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="visuals"
 				>
-			</File>
-			<File
-				RelativePath=".\src\roundrobin.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\roundrobin.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\timedoutput.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\timedoutput.h"
-				>
-			</File>
+				<File
+					RelativePath=".\src\backgroundoutput.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\backgroundoutput.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\ellipseoutput.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\ellipseoutput.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\rectangleoutput.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\rectangleoutput.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="events"
