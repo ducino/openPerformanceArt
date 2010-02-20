@@ -12,8 +12,6 @@ using Poco::XML::Node;
 Scene::Scene(Node* pNode)
 {
 	SceneFactory::the().loadOutputs(outputs, pNode);
-
-	cout << "Document: " << getStringAttribute(pNode->ownerDocument()->firstChild(), "_path", "") << endl;
 }
 //--------------------------------------------------------------
 Scene::~Scene()

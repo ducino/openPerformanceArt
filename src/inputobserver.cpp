@@ -16,7 +16,7 @@ InputObserver::InputObserver(Node *pNode)
 	string inputName = getStringAttribute(pNode, "input", "");
 	if(equalsIgnoreCase(inputName, ""))
 	{
-		cerr << "The input was not specified for node " << pNode->localName() << endl;
+		cerr << "Warning: The input was not specified for node " << pNode->localName() << endl;
 	}
 	else
 	{

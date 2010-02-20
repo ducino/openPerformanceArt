@@ -3,11 +3,12 @@
 
 //Includes
 #include "inputevent.h"
+#include "output.h"
 
 //Forward declarations
 namespace Poco { namespace XML { class Node; } }
 
-class InputObserver 
+class InputObserver: public Output
 {
 public:
 	InputObserver();

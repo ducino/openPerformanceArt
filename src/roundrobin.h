@@ -1,5 +1,5 @@
-#ifndef _TIMED_OUTPUT_H
-#define _TIMED_OUTPUT_H
+#ifndef _ROUND_ROBIN_H
+#define _ROUND_ROBIN_H
 
 //Includes
 #include "output.h"
@@ -7,23 +7,20 @@
 #include "outputcollection.h"
 #include "ofMain.h"
 
-class TimedOutput: public OutputCollection
+class RoundRobin: public OutputCollection
 {
 
 public:
-	TimedOutput();
-	TimedOutput(Poco::XML::Node* pNode);
-	~TimedOutput();
+	RoundRobin();
+	RoundRobin(Poco::XML::Node* pNode);
+	~RoundRobin();
 
 	virtual void draw();
 	virtual void trigger(InputEvent& event);
 	virtual Output* create(Poco::XML::Node* pNode);
 
 private:
-	bool isActive();
-
-	long previousTriggerTime;
-	long duration;
+	int currentOutput;
 };
 
 #endif

@@ -287,11 +287,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\outputcollection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\outputcollection.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\rectangleoutput.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\src\rectangleoutput.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\roundrobin.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\roundrobin.h"
 				>
 			</File>
 			<File

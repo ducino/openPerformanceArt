@@ -1,6 +1,5 @@
 #include "timedoutput.h"
 #include "inputobserver.h"
-#include "scenefactory.h"
 #include "ofMain.h"
 #include "parseutils.h"
 #include "Poco/DOM/Node.h"
@@ -9,11 +8,9 @@ using Poco::XML::Node;
 
 //--------------------------------------------------------------
 TimedOutput::TimedOutput(Node* pNode)
-: InputObserver(pNode)
+: OutputCollection(pNode)
 {
 	duration = getIntAttribute(pNode, "duration", 0);
-
-	SceneFactory::the().loadOutputs(outputs, pNode);
 }
 //--------------------------------------------------------------
 TimedOutput::TimedOutput()
