@@ -49,6 +49,9 @@ class mainApp : public ofBaseApp{
 		vector<SceneProxy*> scenes;
 		int iCurrentScene;
 		SceneProxy* pCurrentScene;
+
+		//Xml file describing the scenes
+		string xmlFile;
 };
 
 #endif

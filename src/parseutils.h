@@ -45,6 +45,11 @@ ofColor getColorAttribute(Poco::XML::Node* pNode, string name, ofColor defaultVa
 ofPoint get2DCoordAttribute(Poco::XML::Node* pNode, string name, ofPoint defaultValue);
 
 /*
+ * Get the absolute path of a file name relative to a document (owner of the given node)
+ */
+string getAbsolutePath(Poco::XML::Node* pNode, string relativePath);
+
+/*
  * Check if two strings are the same (ignoring the case)
  */
 bool equalsIgnoreCase(string one, string other);

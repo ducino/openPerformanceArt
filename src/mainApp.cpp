@@ -13,11 +13,11 @@ mainApp::mainApp(int argc, const char* argv[])
 {
 	if(argc == 1)
 	{
-		SceneFactory::the().setXml("config.xml");
+		xmlFile = "config.xml";
 	}
 	else
 	{
-		SceneFactory::the().setXml(string(argv[1]));
+		xmlFile = string(argv[1]);
 	}
 }
 //--------------------------------------------------------------
@@ -33,7 +33,7 @@ void mainApp::setup()
 	ofSetFrameRate(30);
 	ofSetVerticalSync(true);
 
-	SceneFactory::the().load(scenes);
+	SceneFactory::the().load(xmlFile, scenes);
 }
 
 //--------------------------------------------------------------

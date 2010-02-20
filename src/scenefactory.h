@@ -40,15 +40,10 @@ private:
 
 public:
 
-	/* 
-	 * Set the xml file which contains the configuration of scenes and inputs
-	 */
-	void setXml(string xmlFile);
-
 	/*
 	 * Load all scenes described in the given xml file
 	 */
-	void load(vector<SceneProxy*>& scenes);
+	void load(string xmlFile, vector<SceneProxy*>& scenes);
 
 	/* 
 	 * Load outputs from the given xml
@@ -62,7 +57,6 @@ private:
 	void createInputs(Poco::XML::Node* pRootNode, vector<Input*>& inputs);
 
 private:
-	string xmlFile;
 	map<string, Input*> inputMap;
 	map<string, Output*> outputMap;
 

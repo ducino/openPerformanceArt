@@ -8,23 +8,27 @@
 
 #include "Poco/DOM/DOMParser.h"
 #include "Poco/DOM/Document.h"
-#include "Poco/DOM/NodeIterator.h"
+#include "Poco/DOM/NamedNodeMap.h"
 #include "Poco/DOM/TreeWalker.h"
 #include "Poco/DOM/NodeFilter.h"
+#include "Poco/DOM/Attr.h"
 #include "Poco/DOM/AutoPtr.h"
 #include "Poco/SAX/InputSource.h"
 #include "Poco/Exception.h"
+#include "Poco/Path.h"
 #include <iostream>
 
 using Poco::XML::DOMParser;
 using Poco::XML::InputSource;
 using Poco::XML::Document;
-using Poco::XML::NodeIterator;
+using Poco::XML::NamedNodeMap;
 using Poco::XML::TreeWalker;
 using Poco::XML::NodeFilter;
 using Poco::XML::Node;
+using Poco::XML::Attr;
 using Poco::XML::AutoPtr;
 using Poco::Exception;
+using Poco::Path;
 
 //--------------------------------------------------------------
 SceneFactory::SceneFactory()
@@ -63,26 +67,38 @@ SceneFactory::~SceneFactory()
 	}
 }
 //--------------------------------------------------------------
-void SceneFactory::setXml(string xmlFile)
-{
-	this->xmlFile = xmlFile;
-}
-//--------------------------------------------------------------
-void SceneFactory::load(vector<SceneProxy*>& scenes)
+void SceneFactory::load(string xmlFile, vector<SceneProxy*>& scenes)
 {
 	vector<Input*> inputs;
 	try
 	{
+		//Parse the xml file
 		DOMParser parser;
 		Document* pDoc = parser.parse(xmlFile);
+
+		//Add the path of the document as an attribute of the first child of the document
+		//this to ensure we can always load an included xml file relative to this document
+		{
+			Path path(xmlFile);
+			Attr* attr = pDoc->createAttribute("_path");
+			attr->setNodeValue(path.makeAbsolute().toString());
+			pDoc->firstChild()->attributes()->setNamedItem(attr);
+		}
+
 		//Save the document in memory
 		documents.push_back(pDoc);
 		
-		NodeIterator it(pDoc, NodeFilter::SHOW_ALL);
+		//Iterate the children of the document
+		TreeWalker it(pDoc, NodeFilter::SHOW_ALL);
 		Node* pNode = it.nextNode();
 		while (pNode)
 		{
-			if(match(pNode, "scene"))
+			cout << "Doc: " << pNode->nodeName() << endl;
+			if(match(pNode, "root"))
+			{
+				pNode = it.firstChild();
+			}
+			else if(match(pNode, "scene"))
 			{
 				scenes.push_back(new SceneProxy(pNode));
 			}
@@ -90,8 +106,12 @@ void SceneFactory::load(vector<SceneProxy*>& scenes)
 			{
 				createInputs(pNode, inputs);
 			}
+			else if(match(pNode, "include"))
+			{
+				load(getAbsolutePath(pNode, getStringAttribute(pNode, "path", "")), scenes);
+			}
 
-			pNode = it.nextNode();
+			pNode = it.nextSibling();
 		}
 	}
 	catch (Exception& exc)
@@ -115,7 +135,7 @@ void SceneFactory::createInputs(Poco::XML::Node* pRootNode, vector<Input*>& inpu
 		if( input != NULL)
 		{
 			inputs.push_back(input->create(pNode));
-			cout << "Created input with name : " << pNode->nodeName() << endl;
+			//cout << "Created input with name : " << pNode->nodeName() << endl;
 		}
 		else
 		{
@@ -139,7 +159,7 @@ void SceneFactory::loadOutputs(vector<Output*>& outputs, Poco::XML::Node* pRootN
 		if( output != NULL)
 		{
 			outputs.push_back(output->create(pNode));
-			cout << "Created output with name : " << pNode->nodeName() << endl;
+			//cout << "Created output with name : " << pNode->nodeName() << endl;
 		}
 		else
 		{

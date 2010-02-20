@@ -3,6 +3,8 @@
 #include "output.h"
 #include "scenefactory.h"
 #include "Poco/DOM/Node.h"
+#include "Poco/DOM/Document.h"
+#include "parseutils.h"
 
 using Poco::XML::Node;
 
@@ -10,6 +12,8 @@ using Poco::XML::Node;
 Scene::Scene(Node* pNode)
 {
 	SceneFactory::the().loadOutputs(outputs, pNode);
+
+	cout << "Document: " << getStringAttribute(pNode->ownerDocument()->firstChild(), "_path", "") << endl;
 }
 //--------------------------------------------------------------
 Scene::~Scene()

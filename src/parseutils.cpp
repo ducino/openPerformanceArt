@@ -2,13 +2,17 @@
 
 #include "ofMain.h"
 
+#include "Poco/DOM/Document.h"
 #include "Poco/DOM/Node.h"
 #include "Poco/DOM/AutoPtr.h"
 #include "Poco/DOM/NamedNodeMap.h"
+#include "Poco/Path.h"
 
+using Poco::XML::Document;
 using Poco::XML::Node;
 using Poco::XML::AutoPtr;
 using Poco::XML::NamedNodeMap;
+using Poco::Path;
 
 //--------------------------------------------------------------
 bool match(Poco::XML::Node* pNode, string tag)
@@ -125,6 +129,21 @@ ofPoint get2DCoordAttribute(Poco::XML::Node* pNode, string name, ofPoint default
 	{
 		return defaultValue;
 	}
+}
+//--------------------------------------------------------------
+string getAbsolutePath(Poco::XML::Node* pNode, string relativePath)
+{
+	string nodePath = getStringAttribute(pNode->ownerDocument()->firstChild(), "_path", "");
+
+	if(equalsIgnoreCase(nodePath, ""))
+	{
+		cerr << "Could not determine path of: " << relativePath << endl;
+		return relativePath;
+	}
+
+	Path path(nodePath);
+	path.setFileName(relativePath);
+	return path.toString();
 }
 //--------------------------------------------------------------
 bool equalsIgnoreCase(string one, string other)
