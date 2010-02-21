@@ -9,15 +9,29 @@
 		size="500, 500" 
 		position="10, 50" />
 		
-	<!-- An second image (the same image) is drawn over the previous image
-		a blend function is used to add the pixelinformation of this image
-		to the information which was already present -->
-	<timed input="timer" duration="250">
-		<image 
-			file="data/image.png" 
-			size="480, 480" 
-			position="20, 60" 
-			blend="add" />
-	</timed>
+	<image 
+		file="data/image.png" 
+		size="500, 500" 
+		position="515, 50" />
+	
+	<randompick input="timer">
+		<!-- A second image (the same image) is drawn over the previous image
+			a blend function is used to add the pixelinformation of this image
+			to the information which was already present -->
+		<timed duration="250">
+			<image 
+				file="data/image.png" 
+				size="480, 480" 
+				position="20, 60" 
+				blend="add" />
+		</timed>
+		<!-- The same as above, without blend -->
+		<timed duration="250">
+			<image 
+				file="data/image.png" 
+				size="480, 480" 
+				position="525, 60" />
+		</timed>
+	</randompick>
 </scene>
 </root>

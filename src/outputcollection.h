@@ -17,6 +17,8 @@ public:
 
 protected:
 	vector<Output*> outputs;
+
+	void drawAllOutputs();
 };
 
 #endif

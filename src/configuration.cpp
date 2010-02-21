@@ -9,6 +9,7 @@
 
 #include "timedoutput.h"
 #include "roundrobin.h"
+#include "randompick.h"
 
 
 #define INPUT(__name__, __class__) inputMap.insert(make_pair(__name__, new __class__()));
@@ -29,4 +30,5 @@ void SceneFactory::createOutputMap()
 
 	OUTPUT("timed", TimedOutput)
 	OUTPUT("roundrobin", RoundRobin)
+	OUTPUT("randompick", RandomPick)
 }

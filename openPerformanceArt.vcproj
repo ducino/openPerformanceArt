@@ -290,6 +290,14 @@
 				Name="triggercontrols"
 				>
 				<File
+					RelativePath=".\src\randompick.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\randompick.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\roundrobin.cpp"
 					>
 				</File>

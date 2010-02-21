@@ -1,4 +1,4 @@
-#include "roundrobin.h"
+#include "randompick.h"
 #include "inputobserver.h"
 #include "ofMain.h"
 #include "parseutils.h"
@@ -7,34 +7,32 @@
 using Poco::XML::Node;
 
 //--------------------------------------------------------------
-RoundRobin::RoundRobin(Node* pNode)
-: OutputCollection(pNode),
-  currentOutput(0)
+RandomPick::RandomPick(Node* pNode)
+: OutputCollection(pNode)
 {
 }
 //--------------------------------------------------------------
-RoundRobin::RoundRobin()
+RandomPick::RandomPick()
 {
 }
 //--------------------------------------------------------------
-RoundRobin::~RoundRobin()
+RandomPick::~RandomPick()
 {
 }
 //--------------------------------------------------------------
-void RoundRobin::draw()
+void RandomPick::draw()
 {
 	drawAllOutputs();
 }
 //--------------------------------------------------------------
-void RoundRobin::trigger(InputEvent& event)
+void RandomPick::trigger(InputEvent& event)
 {
-	InputObserver* observer = static_cast<InputObserver*>(outputs[currentOutput]);
+	int pick = ofRandom(0, outputs.size());
+	InputObserver* observer = static_cast<InputObserver*>(outputs[pick]);
 	observer->trigger(event);
-
-	currentOutput = (currentOutput+1)%outputs.size();
 }
 //--------------------------------------------------------------
-Output* RoundRobin::create(Node* pNode)
+Output* RandomPick::create(Node* pNode)
 {
-	return new RoundRobin(pNode);
+	return new RandomPick(pNode);
 }

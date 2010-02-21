@@ -93,7 +93,6 @@ void SceneFactory::load(string xmlFile, vector<SceneProxy*>& scenes)
 		Node* pNode = it.nextNode();
 		while (pNode)
 		{
-			cout << "Doc: " << pNode->nodeName() << endl;
 			if(match(pNode, "root"))
 			{
 				pNode = it.firstChild();
@@ -127,10 +126,10 @@ void SceneFactory::createInputs(Poco::XML::Node* pRootNode, vector<Input*>& inpu
 	TreeWalker it(pRootNode, NodeFilter::SHOW_ELEMENT);
 	Node* pNode = it.nextNode();
 	
-	cout << "Inputs" << endl;
+	//cout << "Inputs" << endl;
 	while (pNode)
 	{
-		cout << "- " << pNode->nodeName() << endl;
+		//cout << "- " << pNode->nodeName() << endl;
 		Input* input = inputMap[pNode->nodeName()];
 		if( input != NULL)
 		{
@@ -151,10 +150,10 @@ void SceneFactory::loadOutputs(vector<Output*>& outputs, Poco::XML::Node* pRootN
 	TreeWalker it(pRootNode, NodeFilter::SHOW_ELEMENT);
 	Node* pNode = it.nextNode();
 	
-	cout << "Outputs" << endl;
+	//cout << "Outputs" << endl;
 	while (pNode)
 	{
-		cout << "- " << pNode->nodeName() << endl;
+		//cout << "- " << pNode->nodeName() << endl;
 		Output* output = outputMap[pNode->nodeName()];
 		if( output != NULL)
 		{

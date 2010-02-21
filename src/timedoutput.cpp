@@ -25,11 +25,7 @@ void TimedOutput::draw()
 {
 	if(isActive())
 	{
-		//Draw all outputs
-		vector<Output*>::iterator iter;
-		for( iter = outputs.begin(); iter != outputs.end(); ++iter ) {
-			(*iter)->draw();
-		}
+		drawAllOutputs();
 	}
 }
 //--------------------------------------------------------------
