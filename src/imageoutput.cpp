@@ -48,8 +48,9 @@ ImageOutput::~ImageOutput()
 //--------------------------------------------------------------
 void ImageOutput::draw()
 {
+	ofSetColor(0xFFFFFF);
 	glPushAttrib(GL_COLOR_BUFFER_BIT | GL_ENABLE_BIT);
-
+	
 	if(bBlend)
 	{
 		if(blend == BLEND_ADD)
