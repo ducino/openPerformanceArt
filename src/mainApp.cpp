@@ -146,7 +146,7 @@ void mainApp::previousScene()
 {
 	if(scenes.size() > 0)
 	{
-		iCurrentScene = (iCurrentScene+1)%scenes.size();
+		iCurrentScene = (scenes.size()+iCurrentScene-1)%scenes.size();
 
 		unloadCurrentScene();
 

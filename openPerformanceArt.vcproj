@@ -326,6 +326,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\imageoutput.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\imageoutput.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\rectangleoutput.cpp"
 					>
 				</File>

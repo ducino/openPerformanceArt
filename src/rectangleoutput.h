@@ -3,7 +3,6 @@
 
 //Includes
 #include "output.h"
-#include "inputobserver.h"
 #include "ofMain.h"
 
 class RectangleOutput: public Output

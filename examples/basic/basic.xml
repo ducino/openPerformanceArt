@@ -1,13 +1,4 @@
 <root>
-
-<input>
-	<!-- Three timer inputs, default interval value is 1000ms -->
-	<timer name="timer" />
-	<timer name="timerveryfast" interval="100"/>
-	<timer name="timerfast" interval="500"/>
-	<timer name="timerslow" interval="2000"/>
-</input>
-
 <scene name="Basic Example">
 
 	<!-- Gray background -->
