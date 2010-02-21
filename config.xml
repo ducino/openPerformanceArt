@@ -1,6 +1,6 @@
 <root>
 	<input>
-		<!-- Three timer inputs, default interval value is 1000ms -->
+		<!-- Timer inputs, default interval value is 1000ms -->
 		<timer name="timer" />
 		<timer name="timerveryfast" interval="100"/>
 		<timer name="timerfast" interval="500"/>
