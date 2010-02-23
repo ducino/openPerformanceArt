@@ -1,3 +1,9 @@
+/*
+ * mainApp class
+ *
+ * Copyright 2010 Johan Robben
+ * This code is distributed under the terms of the GNU General Public License
+ */
 #ifndef _TEST_APP
 #define _TEST_APP
 

@@ -1,3 +1,9 @@
+/*
+ * RoundRobin class
+ *
+ * Copyright 2010 Johan Robben
+ * This code is distributed under the terms of the GNU General Public License
+ */
 #ifndef _ROUND_ROBIN_H
 #define _ROUND_ROBIN_H
 

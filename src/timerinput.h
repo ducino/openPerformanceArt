@@ -1,6 +1,10 @@
-/*********************************************************
-* A timer input will activate on a regular time interval
-*********************************************************/
+/*
+ * TimerInput class
+ * A timer input will activate on a regular time interval
+ *
+ * Copyright 2010 Johan Robben
+ * This code is distributed under the terms of the GNU General Public License
+ */
 
 #ifndef _TIMER_INPUT_H
 #define _TIMER_INPUT_H

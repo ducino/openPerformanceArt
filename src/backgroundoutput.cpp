@@ -1,3 +1,9 @@
+/*
+ * BackgroundOutput implementation
+ *
+ * Copyright 2010 Johan Robben
+ * This code is distributed under the terms of the GNU General Public License
+ */
 #include "backgroundoutput.h"
 #include "ofMain.h"
 #include "parseutils.h"

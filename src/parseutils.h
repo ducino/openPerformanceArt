@@ -1,7 +1,11 @@
-/***************************************
+/*
+ * parseUtils
  * A collection of utility methods
  * for xml and string operations
- ***************************************/
+ *
+ * Copyright 2010 Johan Robben
+ * This code is distributed under the terms of the GNU General Public License
+ */
 
 #ifndef _UTILS_H
 #define _UTILS_H

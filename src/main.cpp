@@ -1,3 +1,9 @@
+/*
+ * main
+ *
+ * Copyright 2010 Johan Robben
+ * This code is distributed under the terms of the GNU General Public License
+ */
 #include "ofMain.h"
 #include "mainApp.h"
 #include "ofAppGlutWindow.h"
