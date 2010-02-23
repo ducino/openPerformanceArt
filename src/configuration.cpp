@@ -1,6 +1,7 @@
 #include "scenefactory.h"
 
 #include "timerinput.h"
+#include "audioinput.h"
 
 #include "backgroundoutput.h"
 #include "rectangleoutput.h"
@@ -19,6 +20,7 @@
 void SceneFactory::createInputMap()
 {
 	INPUT("timer", TimerInput)
+	INPUT("audio", AudioInput)
 }
 //--------------------------------------------------------------
 void SceneFactory::createOutputMap()

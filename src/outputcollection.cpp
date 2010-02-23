@@ -17,6 +17,14 @@ OutputCollection::OutputCollection()
 //--------------------------------------------------------------
 OutputCollection::~OutputCollection()
 {
+	//Clean up the outputs
+	{
+		vector<Output*>::iterator iter;
+		for( iter = outputs.begin(); iter != outputs.end(); ++iter ) {
+			delete (*iter);
+		}
+		outputs.clear();
+	}
 }
 //--------------------------------------------------------------
 void OutputCollection::drawAllOutputs()

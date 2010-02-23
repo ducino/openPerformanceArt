@@ -2,6 +2,7 @@
 #include "scenefactory.h"
 #include "sceneproxy.h"
 #include "input.h"
+#include "audioinput.h"
 #include "inputmanager.h"
 
 using namespace std;
@@ -9,7 +10,8 @@ using namespace std;
 //--------------------------------------------------------------
 mainApp::mainApp(int argc, const char* argv[])
 : pCurrentScene(NULL),
-  iCurrentScene(-1)
+  iCurrentScene(-1),
+  pAudioInput(NULL)
 {
 	if(argc == 1)
 	{
@@ -172,5 +174,25 @@ void mainApp::unloadCurrentScene()
 	{
 		pCurrentScene->unload();
 		InputManager::the().unregisterAllObservers();
+	}
+}
+//--------------------------------------------------------------
+void mainApp::registerAudioInput(AudioInput* pInput)
+{
+	if(pAudioInput != NULL)
+	{
+		cerr << "Warning: a previous audio input was registered" << endl;
+	}
+
+	pAudioInput = pInput;
+
+	ofSoundStreamSetup(0, 1, this, 44100, pInput->getBufferSize(), 4);
+}
+//--------------------------------------------------------------
+void mainApp::audioReceived(float* input, int bufferSize, int nChannels)
+{
+	if(pAudioInput)
+	{
+		pAudioInput->audioReceived(input, bufferSize, nChannels);
 	}
 }
