@@ -51,7 +51,7 @@ int FftEvent::getBufferSize()
 	return buffersize;
 }
 //--------------------------------------------------------------
-float* FftEvent::getFft()
+float* FftEvent::getFftBuffer()
 {
 	return fft;
 }

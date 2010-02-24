@@ -381,6 +381,14 @@
 			Name="events"
 			>
 			<File
+				RelativePath=".\src\fftevent.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\fftevent.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\inputevent.cpp"
 				>
 			</File>

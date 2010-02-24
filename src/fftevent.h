@@ -20,7 +20,7 @@ public:
 	void Copy(const FftEvent& other);
 	
 	int getBufferSize();
-	float* getFft();
+	float* getFftBuffer();
 
 private:
 	int buffersize;
