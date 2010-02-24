@@ -21,7 +21,7 @@ class TimerInput: public Input
 public:
 	TimerInput();
 	TimerInput(Poco::XML::Node* pNode);
-	~TimerInput();
+	virtual ~TimerInput();
 
 	virtual void read();
 

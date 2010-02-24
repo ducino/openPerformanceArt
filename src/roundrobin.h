@@ -19,7 +19,7 @@ class RoundRobin: public OutputCollection
 public:
 	RoundRobin();
 	RoundRobin(Poco::XML::Node* pNode);
-	~RoundRobin();
+	virtual ~RoundRobin();
 
 	virtual void draw();
 	virtual void trigger(InputEvent& event);

@@ -19,7 +19,7 @@ class TimedOutput: public OutputCollection
 public:
 	TimedOutput();
 	TimedOutput(Poco::XML::Node* pNode);
-	~TimedOutput();
+	virtual ~TimedOutput();
 
 	virtual void draw();
 	virtual void trigger(InputEvent& event);

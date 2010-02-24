@@ -1,32 +1,36 @@
 /*
- * ImageOutput class
+ * VideoOutput class
  *
  * Copyright 2010 Johan Robben
  * This code is distributed under the terms of the GNU General Public License
  */
-#ifndef _IMAGE_OUTPUT_H
-#define _IMAGE_OUTPUT_H
+#ifndef _VIDEO_OUTPUT_H
+#define _VIDEO_OUTPUT_H
 
 //Includes
 #include "output.h"
-#include "ofMain.h"
+#include "ofTypes.h"
+
+//Foward declarations
+class ofVideoPlayer;
 
 #define BLEND_NONE 0
 #define BLEND_ADD 1
 
-class ImageOutput: public Output
+class VideoOutput: public Output
 {
 
 public:
-	ImageOutput();
-	ImageOutput(Poco::XML::Node* pNode);
-	virtual ~ImageOutput();
+	VideoOutput();
+	VideoOutput(Poco::XML::Node* pNode);
+	virtual ~VideoOutput();
 
 	virtual void draw();
+	virtual void update();
 	virtual Output* create(Poco::XML::Node* pNode);
 
 private:
-	ofImage im;
+	ofVideoPlayer* video;
 	ofPoint position;
 	ofPoint size;
 	bool	bBlend;

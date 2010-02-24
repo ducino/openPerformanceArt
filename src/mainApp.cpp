@@ -202,3 +202,8 @@ void mainApp::audioReceived(float* input, int bufferSize, int nChannels)
 		pAudioInput->audioReceived(input, bufferSize, nChannels);
 	}
 }
+//---------------------------------------------------------------
+VideoPool& mainApp::getVideoPool()
+{
+	return videoPool;
+}

@@ -17,7 +17,7 @@ class BackgroundOutput: public Output
 public:
 	BackgroundOutput();
 	BackgroundOutput(Poco::XML::Node* pNode);
-	~BackgroundOutput();
+	virtual ~BackgroundOutput();
 
 	virtual void draw();
 

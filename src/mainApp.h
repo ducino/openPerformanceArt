@@ -9,6 +9,7 @@
 
 //Includes
 #include "ofMain.h"
+#include "VideoPool.h"
 
 //Forward declarations
 class SceneFactory;
@@ -43,6 +44,11 @@ public:
 	 */
 	void registerAudioInput(AudioInput* pInput);
 
+	/*
+	 * Get the pool of video players
+	 */
+	VideoPool& getVideoPool();
+
 private:
 
 	void drawTitleScreen();
@@ -71,6 +77,9 @@ private:
 
 	//Audio input listening to audioReceived events
 	AudioInput* pAudioInput;
+
+	//The pool of video players
+	VideoPool videoPool;
 };
 
 #endif

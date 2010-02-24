@@ -19,7 +19,9 @@ class OutputCollection: public InputObserver
 public:
 	OutputCollection();
 	OutputCollection(Poco::XML::Node* pNode);
-	~OutputCollection();
+	virtual ~OutputCollection();
+
+	virtual void update();
 
 protected:
 	vector<Output*> outputs;

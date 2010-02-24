@@ -11,6 +11,8 @@
 
 using Poco::XML::Node;
 
+using namespace std;
+
 //--------------------------------------------------------------
 Input::Input()
 {

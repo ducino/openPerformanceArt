@@ -18,7 +18,7 @@ class EllipseOutput: public Output
 public:
 	EllipseOutput();
 	EllipseOutput(Poco::XML::Node* pNode);
-	~EllipseOutput();
+	virtual ~EllipseOutput();
 
 	virtual void draw();
 	virtual Output* create(Poco::XML::Node* pNode);

@@ -15,7 +15,7 @@ class Output
 
 public:
 	Output();
-	~Output();
+	virtual ~Output();
 
 	/*
 	 * Draw the output
@@ -26,6 +26,11 @@ public:
 	 * Create an instance of this class given an XML description
 	 */
 	virtual Output* create(Poco::XML::Node* pNode)=0;
+
+	/*
+	 * Update the output
+	 */
+	virtual void update();
 };
 
 #endif

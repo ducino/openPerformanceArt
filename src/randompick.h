@@ -19,7 +19,7 @@ class RandomPick: public OutputCollection
 public:
 	RandomPick();
 	RandomPick(Poco::XML::Node* pNode);
-	~RandomPick();
+	virtual ~RandomPick();
 
 	virtual void draw();
 	virtual void trigger(InputEvent& event);

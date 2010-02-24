@@ -7,8 +7,11 @@
 #include "outputcollection.h"
 #include "scenefactory.h"
 #include "Poco/DOM/Node.h"
+#include <iostream>
 
 using Poco::XML::Node;
+
+using namespace std;
 
 //--------------------------------------------------------------
 OutputCollection::OutputCollection(Node* pNode)
@@ -18,7 +21,7 @@ OutputCollection::OutputCollection(Node* pNode)
 }
 //--------------------------------------------------------------
 OutputCollection::OutputCollection()
-{
+{	
 }
 //--------------------------------------------------------------
 OutputCollection::~OutputCollection()
@@ -30,6 +33,15 @@ OutputCollection::~OutputCollection()
 			delete (*iter);
 		}
 		outputs.clear();
+	}
+}
+//--------------------------------------------------------------
+void OutputCollection::update()
+{
+	//Draw all outputs
+	vector<Output*>::iterator iter;
+	for( iter = outputs.begin(); iter != outputs.end(); ++iter ) {
+		(*iter)->update();
 	}
 }
 //--------------------------------------------------------------

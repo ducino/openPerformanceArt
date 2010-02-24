@@ -14,6 +14,7 @@
 #include "mainApp.h"
 
 using Poco::XML::Node;
+using Poco::Mutex;
 
 //--------------------------------------------------------------
 AudioInput::AudioInput()
@@ -50,30 +51,12 @@ AudioInput::~AudioInput()
 //--------------------------------------------------------------
 void AudioInput::read()
 {
-}
-//--------------------------------------------------------------
-Input* AudioInput::create(Node* pNode)
-{
-	return new AudioInput(pNode);
-}
-//--------------------------------------------------------------
-int AudioInput::getBufferSize()
-{
-	return bufferSize;
-}
-//--------------------------------------------------------------
-void AudioInput::audioReceived(float* input, int bufferSize, int nChannels)
-{
-	// store input in audioInput buffer
-	memcpy(audioInput, input, sizeof(float) * bufferSize);
-
-	fft->setSignal(audioInput);
-	memcpy(fftOutput, fft->getAmplitude(), sizeof(float) * fft->getBinSize());
+	bufferMutex.lock();
 
 	//Beat detection
 	//Calculate total
 	total = 0;
-	for(int i = 0; i < 10/*fft->getBinSize()*/; i++)
+	for(int i = 0; i < 5/*fft->getBinSize()*/; i++)
 	{
 		total += fftOutput[i];
 	}
@@ -94,4 +77,28 @@ void AudioInput::audioReceived(float* input, int bufferSize, int nChannels)
 		threshold = threshold*0.95;
 		previousThresholdAdjustTime = ofGetElapsedTimeMillis();
 	}
+	bufferMutex.unlock();
+}
+//--------------------------------------------------------------
+Input* AudioInput::create(Node* pNode)
+{
+	return new AudioInput(pNode);
+}
+//--------------------------------------------------------------
+int AudioInput::getBufferSize()
+{
+	return bufferSize;
+}
+//--------------------------------------------------------------
+void AudioInput::audioReceived(float* input, int bufferSize, int nChannels)
+{
+	bufferMutex.lock();
+
+	// store input in audioInput buffer
+	memcpy(audioInput, input, sizeof(float) * bufferSize);
+
+	fft->setSignal(audioInput);
+	memcpy(fftOutput, fft->getAmplitude(), sizeof(float) * fft->getBinSize());
+
+	bufferMutex.unlock();
 }

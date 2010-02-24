@@ -13,6 +13,7 @@
 #include "rectangleoutput.h"
 #include "ellipseoutput.h"
 #include "imageoutput.h"
+#include "videooutput.h"
 
 #include "timedoutput.h"
 #include "roundrobin.h"
@@ -35,6 +36,7 @@ void SceneFactory::createOutputMap()
 	OUTPUT("rectangle", RectangleOutput)
 	OUTPUT("ellipse", EllipseOutput)
 	OUTPUT("image", ImageOutput)
+	OUTPUT("video", VideoOutput)
 
 	OUTPUT("timed", TimedOutput)
 	OUTPUT("roundrobin", RoundRobin)

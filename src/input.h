@@ -23,7 +23,7 @@ class Input
 public:
 	Input();
 	Input(Poco::XML::Node* pNode);
-	~Input();
+	virtual ~Input();
 
 	/*
 	 * Read the input, notifying observers when something of interest has happened

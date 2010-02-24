@@ -9,6 +9,7 @@
 		<audio name="audio"/>
 	</input>
 	<include path="examples/audio/audio.xml" />
+	<include path="examples/video/video.xml" />
 	<include path="examples/basic/basic.xml" />
 	<include path="examples/image/image.xml" />
 	<scene name="Empty scene"></scene>

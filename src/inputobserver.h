@@ -19,7 +19,7 @@ class InputObserver: public Output
 public:
 	InputObserver();
 	InputObserver(Poco::XML::Node* pNode);
-	~InputObserver();
+	virtual ~InputObserver();
 
 	virtual void trigger(InputEvent& event)=0;
 };

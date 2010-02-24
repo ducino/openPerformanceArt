@@ -17,7 +17,7 @@ class RectangleOutput: public Output
 public:
 	RectangleOutput();
 	RectangleOutput(Poco::XML::Node* pNode);
-	~RectangleOutput();
+	virtual ~RectangleOutput();
 
 	virtual void draw();
 	virtual Output* create(Poco::XML::Node* pNode);

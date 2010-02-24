@@ -1,0 +1,1 @@
+<root><scene name="Video Example">	<!-- Gray background -->	<background color="219, 214, 214" />		<!-- A video -->	<video 		file="..\..\..\examples\moviePlayerExample\bin\data\movies\fingers.mov" 		size="580, 580" 		position="210, 80" /></scene></root>

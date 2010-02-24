@@ -12,7 +12,7 @@ class InputEvent
 public:
 	InputEvent();
 	InputEvent(int eventId);
-	~InputEvent();
+	virtual ~InputEvent();
 
 	/*
 	 * Get the event identifier

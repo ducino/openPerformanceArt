@@ -44,6 +44,7 @@
 				AdditionalIncludeDirectories="..\..\libs\openFrameworks;..\..\libs\openFrameworks\graphics;..\..\libs\openFrameworks\app;..\..\libs\openFrameworks\sound;..\..\libs\openFrameworks\utils;..\..\libs\openFrameworks\communication;..\..\libs\openFrameworks\video;..\..\libs\openFrameworks\events;..\..\libs\glut\include;..\..\libs\rtAudio\include;..\..\libs\quicktime\include;..\..\libs\freetype\include;..\..\libs\freetype\include\freetype2;..\..\libs\freeImage\include;..\..\libs\fmodex\include;..\..\libs\videoInput\include;..\..\libs\glee\include;..\..\libs\glu\include;..\..\libs\poco\include;..\..\addons;addons\ofxFft\src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;POCO_STATIC"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
@@ -127,6 +128,7 @@
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\libs\openFrameworks;..\..\libs\openFrameworks\graphics;..\..\libs\openFrameworks\app;..\..\libs\openFrameworks\sound;..\..\libs\openFrameworks\utils;..\..\libs\openFrameworks\communication;..\..\libs\openFrameworks\video;..\..\libs\openFrameworks\events;..\..\libs\glut\include;..\..\libs\rtAudio\include;..\..\libs\quicktime\include;..\..\libs\freetype\include;..\..\libs\freetype\include\freetype2;..\..\libs\freeImage\include;..\..\libs\fmodex\include;..\..\libs\videoInput\include;..\..\libs\glee\include;..\..\libs\glu\include;..\..\libs\poco\include;..\..\addons;addons\ofxFft\src"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;POCO_STATIC"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -236,6 +238,14 @@
 			</File>
 			<File
 				RelativePath=".\src\sceneproxy.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\videopool.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\videopool.h"
 				>
 			</File>
 		</Filter>
@@ -355,6 +365,14 @@
 				</File>
 				<File
 					RelativePath=".\src\rectangleoutput.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\videooutput.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\videooutput.h"
 					>
 				</File>
 			</Filter>
