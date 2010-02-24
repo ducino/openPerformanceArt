@@ -41,7 +41,8 @@ void TimerInput::read()
 	if(ofGetElapsedTimeMillis() > activationTime)
 	{
 		updateActivationTime();
-		notifyObservers(InputEvent());
+		InputEvent event = InputEvent();
+		notifyObservers(&event);
 	}
 }
 //--------------------------------------------------------------

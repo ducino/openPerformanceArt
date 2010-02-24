@@ -55,7 +55,7 @@ protected:
 	/*
 	 * Notify all observers of a given event
 	 */
-	void notifyObservers(InputEvent event);
+	void notifyObservers(InputEvent* event);
 
 private:
 

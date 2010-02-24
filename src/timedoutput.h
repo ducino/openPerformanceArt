@@ -22,7 +22,7 @@ public:
 	virtual ~TimedOutput();
 
 	virtual void draw();
-	virtual void trigger(InputEvent& event);
+	virtual void trigger(InputEvent* event);
 	virtual Output* create(Poco::XML::Node* pNode);
 
 private:

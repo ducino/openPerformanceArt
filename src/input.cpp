@@ -46,7 +46,7 @@ void Input::removeAllObservers()
 	observers.clear();
 }
 //--------------------------------------------------------------
-void Input::notifyObservers(InputEvent event)
+void Input::notifyObservers(InputEvent* event)
 {
 	for( vector<InputObserver*>::const_iterator iter = observers.begin();
 		iter != observers.end(); ++iter ) 

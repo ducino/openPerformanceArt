@@ -17,7 +17,7 @@ public:
 	/*
 	 * Get the event identifier
 	 */
-	int getEventId();
+	int getEventId() const;
 
 private:
 	int eventId;

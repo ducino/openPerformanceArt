@@ -31,7 +31,7 @@ void RandomPick::draw()
 	drawAllOutputs();
 }
 //--------------------------------------------------------------
-void RandomPick::trigger(InputEvent& event)
+void RandomPick::trigger(InputEvent* event)
 {
 	int pick = ofRandom(0, outputs.size());
 	InputObserver* observer = static_cast<InputObserver*>(outputs[pick]);

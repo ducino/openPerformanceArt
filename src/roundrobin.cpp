@@ -32,7 +32,7 @@ void RoundRobin::draw()
 	drawAllOutputs();
 }
 //--------------------------------------------------------------
-void RoundRobin::trigger(InputEvent& event)
+void RoundRobin::trigger(InputEvent* event)
 {
 	InputObserver* observer = static_cast<InputObserver*>(outputs[currentOutput]);
 	observer->trigger(event);

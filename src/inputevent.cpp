@@ -21,7 +21,7 @@ InputEvent::~InputEvent()
 {
 }
 //--------------------------------------------------------------
-int InputEvent::getEventId()
+int InputEvent::getEventId() const
 {
 	return eventId;
 }

@@ -35,7 +35,7 @@ void TimedOutput::draw()
 	}
 }
 //--------------------------------------------------------------
-void TimedOutput::trigger(InputEvent& event)
+void TimedOutput::trigger(InputEvent* event)
 {
 	previousTriggerTime = ofGetElapsedTimeMillis();
 }
