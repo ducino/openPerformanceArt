@@ -39,6 +39,7 @@ private:
 	float* fftOutput;
 
 	//Thread safety
+	bool bAudioReceived;
 	Poco::Mutex bufferMutex;
 
 	//Beat detection

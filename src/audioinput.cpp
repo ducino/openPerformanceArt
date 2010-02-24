@@ -7,6 +7,7 @@
 #include "audioinput.h"
 #include "parseutils.h"
 #include "inputevent.h"
+#include "fftevent.h"
 #include "ofxFft.h"
 
 #include "ofMain.h"
@@ -21,7 +22,8 @@ AudioInput::AudioInput()
 : bufferSize(512),
   audioInput(NULL),
   fftOutput(NULL),
-  fft(NULL)
+  fft(NULL),
+  bAudioReceived(false)
 {
 }
 //--------------------------------------------------------------
@@ -30,7 +32,8 @@ AudioInput::AudioInput(Node* pNode)
   bufferSize(512),
   audioInput(NULL),
   fftOutput(NULL),
-  fft(NULL)
+  fft(NULL),
+  bAudioReceived(false)
 {
 	//fft = ofxFft::create(bufferSize, OF_FFT_WINDOW_BARTLETT);
 	// To use with FFTW, try:
@@ -53,10 +56,17 @@ void AudioInput::read()
 {
 	bufferMutex.lock();
 
+	//notifyObservers(FftEvent());
+	if(bAudioReceived)
+	{
+		FftEvent fftEvent = FftEvent(0, fft->getBinSize(), fftOutput);
+		notifyObservers(&fftEvent);
+		bAudioReceived = false;
+	}
 	//Beat detection
 	//Calculate total
-	total = 0;
-	for(int i = 0; i < 5/*fft->getBinSize()*/; i++)
+	/*total = 0;
+	for(int i = 0; i < fft->getBinSize(); i++)
 	{
 		total += fftOutput[i];
 	}
@@ -76,7 +86,7 @@ void AudioInput::read()
 	{
 		threshold = threshold*0.95;
 		previousThresholdAdjustTime = ofGetElapsedTimeMillis();
-	}
+	}*/
 	bufferMutex.unlock();
 }
 //--------------------------------------------------------------
@@ -93,6 +103,8 @@ int AudioInput::getBufferSize()
 void AudioInput::audioReceived(float* input, int bufferSize, int nChannels)
 {
 	bufferMutex.lock();
+	
+	bAudioReceived = true;
 
 	// store input in audioInput buffer
 	memcpy(audioInput, input, sizeof(float) * bufferSize);
