@@ -25,3 +25,8 @@ int InputEvent::getEventId() const
 {
 	return eventId;
 }
+//--------------------------------------------------------------
+void InputEvent::Copy(const InputEvent& other)
+{
+	eventId = other.eventId;
+}

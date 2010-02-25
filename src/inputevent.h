@@ -19,7 +19,9 @@ public:
 	 */
 	int getEventId() const;
 
-private:
+protected:
+	void Copy(const InputEvent& other);
+
 	int eventId;
 };
 

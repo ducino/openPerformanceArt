@@ -10,20 +10,20 @@
 //--------------------------------------------------------------
 FftEvent::FftEvent()
 :InputEvent(0),
- fft(NULL)
+ fft(NULL),
+ bBufferOwner(false)
 {
 }
 //--------------------------------------------------------------
 FftEvent::FftEvent(int eventId, int buffersize, float* fft)
-:InputEvent(eventId)
+: InputEvent(eventId),
+  bBufferOwner(false)
 {
-	this->fft = new float[buffersize];
+	this->fft = fft;
 	this->buffersize = buffersize;
-	memcpy(this->fft, fft, sizeof(float) * buffersize);
 }
 //--------------------------------------------------------------
 FftEvent::FftEvent(const FftEvent& other)
-: InputEvent(0)
 {
 	Copy(other);
 }
@@ -36,14 +36,19 @@ FftEvent& FftEvent::operator=(const FftEvent& other)
 //--------------------------------------------------------------
 void FftEvent::Copy(const FftEvent& other)
 {
+	InputEvent::Copy(other);
 	fft = new float[other.buffersize];
 	buffersize = other.buffersize;
 	memcpy(this->fft, other.fft, sizeof(float) * buffersize);
+	bBufferOwner = true;
 }
 //--------------------------------------------------------------
 FftEvent::~FftEvent()
 {
-	delete [] fft;
+	if(bBufferOwner)
+	{
+		delete [] fft;
+	}
 }
 //--------------------------------------------------------------
 int FftEvent::getBufferSize()

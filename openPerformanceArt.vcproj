@@ -197,6 +197,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\dynamicthreshold.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\dynamicthreshold.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
 				>
 			</File>
