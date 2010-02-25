@@ -1,41 +1,41 @@
 /*
- * FftEvent class
+ * AudioEvent class
  *
  * Copyright 2010 Johan Robben
  * This code is distributed under the terms of the GNU General Public License
  */
-#ifndef _FFT_EVENT_H
-#define _FFT_EVENT_H
+#ifndef _AUDIO_EVENT_H
+#define _AUDIO_EVENT_H
 
 #include "inputevent.h"
 
-class FftEvent : public InputEvent
+class AudioEvent : public InputEvent
 {
 public:
-	FftEvent();
+	AudioEvent();
 
 	/*
-	 * Create a FftEvent with given eventId, buffersize and fft buffer
+	 * Create a AudioEvent with given eventId, buffersize and audio buffer
 	 * The pointer to the buffer is stored in this event
 	 * and this class does not own the pointer
 	 * (this, to increase performance)
 	 */
-	FftEvent(int eventId, int buffersize, float* fft);
+	AudioEvent(int eventId, int buffersize, float* buffer);
 
 	/*
 	 * When the copy constructor (or assignment) is used, the whole buffer
 	 * is copied to a new buffer.
 	 */
-	FftEvent(const FftEvent& other);
+	AudioEvent(const AudioEvent& other);
 
-	virtual ~FftEvent();
+	virtual ~AudioEvent();
 
 	/*
 	 * When the assignment operator is used, the whole buffer
 	 * is copied to a new buffer.
 	 */
-	FftEvent& operator=(const FftEvent& other);	
-	
+	AudioEvent& operator=(const AudioEvent& other);
+
 	/*
 	 * Get the size of the buffer
 	 */
@@ -44,13 +44,13 @@ public:
 	/*
 	 * Get a pointer to the buffer
 	 */
-	float* getFftBuffer();
+	float* getAudioBuffer();
 
 private:
-	void Copy(const FftEvent& other);
+	void Copy(const AudioEvent& other);
 
 	int buffersize;
-	float* fft;
+	float* audioBuffer;
 	bool bBufferOwner;
 };
 

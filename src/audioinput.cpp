@@ -8,6 +8,7 @@
 #include "parseutils.h"
 #include "inputevent.h"
 #include "fftevent.h"
+#include "audioevent.h"
 #include "ofxFft.h"
 
 #include "ofMain.h"
@@ -56,37 +57,19 @@ void AudioInput::read()
 {
 	bufferMutex.lock();
 
-	//notifyObservers(FftEvent());
 	if(bAudioReceived)
 	{
-		FftEvent fftEvent = FftEvent(0, fft->getBinSize(), fftOutput);
+		//Send fft event
+		FftEvent fftEvent(0, fft->getBinSize(), fftOutput);
 		notifyObservers(&fftEvent);
+
+		//Send audio event
+		AudioEvent audioEvent(1, bufferSize, audioInput);
+		notifyObservers(&audioEvent);
+
 		bAudioReceived = false;
 	}
-	//Beat detection
-	//Calculate total
-	/*total = 0;
-	for(int i = 0; i < fft->getBinSize(); i++)
-	{
-		total += fftOutput[i];
-	}
 
-	if(total > threshold*0.7)
-	{
-		notifyObservers(InputEvent());
-	}
-
-	if(total > threshold)
-	{
-		threshold = total;
-		previousThresholdAdjustTime = ofGetElapsedTimeMillis();
-	}
-
-	if(ofGetElapsedTimeMillis() - previousThresholdAdjustTime > 1000)
-	{
-		threshold = threshold*0.95;
-		previousThresholdAdjustTime = ofGetElapsedTimeMillis();
-	}*/
 	bufferMutex.unlock();
 }
 //--------------------------------------------------------------

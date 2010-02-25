@@ -4,13 +4,15 @@
 	<!-- Gray background -->
 	<background color="219, 214, 214" />
 	
-	<!-- A long rectangle which is drawn when the audioinput sends an event -->
-	<timed duration="100" input="audio">
-		<rectangle 
-			color="50, 50, 50" 
-			size="600, 600" 
-			position="200, 70" />
-	</timed>
+	<!-- A long rectangle which is drawn when a beat is detected -->
+	<beatdetect input="audio">
+		<timed duration="100">
+			<rectangle 
+				color="50, 50, 50" 
+				size="600, 600" 
+				position="200, 70" />
+		</timed>
+	</beatdetect>
 </scene>
 
 </root>

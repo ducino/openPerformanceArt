@@ -316,6 +316,14 @@
 				Name="triggercontrols"
 				>
 				<File
+					RelativePath=".\src\beatdetect.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\beatdetect.h"
+					>
+				</File>
+				<File
 					RelativePath=".\src\randompick.cpp"
 					>
 				</File>
@@ -388,6 +396,14 @@
 		<Filter
 			Name="events"
 			>
+			<File
+				RelativePath=".\src\audioevent.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\audioevent.h"
+				>
+			</File>
 			<File
 				RelativePath=".\src\fftevent.cpp"
 				>
